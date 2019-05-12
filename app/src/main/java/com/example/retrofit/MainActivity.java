@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     content+= "Salary : " + employee.getEmployee_salary() +"\n";
                     content+= "------------------------- "+"\n";
 
+                    tvEmployee.append(content);
                 }
             }
 
