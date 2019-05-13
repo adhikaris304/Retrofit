@@ -20,8 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class UpdateEmployeeActivity extends AppCompatActivity {
 
     private final static String BASE_URL = "http://dummy.restapiexample.com/api/v1/";
-    private EditText etEmpID_Up, etName_Up, etAge_Up, etSalary_Up;
-    private Button btnSearch_Up, btnRegister_Up, btnDelete_Up;
+    private EditText etEmpNO, etEmpName, EmpAge, etEmpSalary;
+    private Button btnSearchEmp, btnRegister, btnDelete;
     private TextView tvData;
 
 
@@ -29,17 +29,17 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_employee);
         
-        etEmpID_Up=findViewById(R.id.etEmpID_Up);
-        etName_Up=findViewById(R.id.etName_Up);
-        etAge_Up=findViewById(R.id.etAge_Up);
-        etSalary_Up=findViewById(R.id.etSalary_Up);
-        btnSearch_Up=findViewById(R.id.btnSearch_Up);
-        btnRegister_Up=findViewById(R.id.btnRegister_Up);
-        btnDelete_Up=findViewById(R.id.btnDelete_Up);
+        etEmpNO=findViewById(R.id.etEmpNo);
+        etEmpName=findViewById(R.id.etEmpName);
+        EmpAge=findViewById(R.id.EmpAge);
+        etEmpSalary=findViewById(R.id.etEmpSalary);
+        btnSearchEmp=findViewById(R.id.btnSearchEmp);
+        btnRegister=findViewById(R.id.btnRegister);
+        btnDelete=findViewById(R.id.btnDelete);
         tvData=findViewById(R.id.tvData);
         
         
-        btnSearch_Up.setOnClickListener(new View.OnClickListener() {
+        btnSearchEmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Search();
@@ -47,9 +47,9 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
 
 
             private void Search() {
-                String name = etName_Up.getText().toString();
-                Float salary = Float.parseFloat(etSalary_Up.getText().toString());
-                int age = Integer.parseInt(etAge_Up.getText().toString());
+                String name = etEmpName.getText().toString();
+                Float salary = Float.parseFloat(etEmpSalary.getText().toString());
+                int age = Integer.parseInt(EmpAge.getText().toString());
 
                 EmployeeCUD employee = new EmployeeCUD(name, salary, age);
 
@@ -60,7 +60,7 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
 
                 final EmployeeAPI employeeAPI = retrofit.create(EmployeeAPI.class);
 
-                Call<Employee> ListCall = employeeAPI.getEmployeeByID(Integer.parseInt(etEmpID_Up.getText().toString()));
+                Call<Employee> ListCall = employeeAPI.getEmployeeByID(Integer.parseInt(etEmpNO.getText().toString()));
 
                 ListCall.enqueue(new Callback<Employee>() {
                     @Override
@@ -83,7 +83,7 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
                 });
 
 
-                btnRegister_Up.setOnClickListener(new View.OnClickListener() {
+                btnRegister.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Register();
@@ -91,9 +91,9 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
                     }
 
                     private void Register() {
-                        String name = etName_Up.getText().toString();
-                        Float salary = Float.parseFloat(etSalary_Up.getText().toString());
-                        int age = Integer.parseInt(etAge_Up.getText().toString());
+                        String name = etEmpName.getText().toString();
+                        Float salary = Float.parseFloat(etEmpSalary.getText().toString());
+                        int age = Integer.parseInt(EmpAge.getText().toString());
 
                         EmployeeCUD employeeCUD = new EmployeeCUD(name, salary, age);
 
@@ -123,7 +123,7 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
                 });
 
 
-                btnDelete_Up.setOnClickListener(new View.OnClickListener() {
+                btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         DeleteEmployee();
@@ -131,11 +131,12 @@ public class UpdateEmployeeActivity extends AppCompatActivity {
 
                     private void DeleteEmployee() {
                         EmployeeCUD employee = new EmployeeCUD(
-                                etName_Up.getText().toString(), Float.parseFloat(etSalary_Up.getText().toString()),
-                                Integer.parseInt(etAge_Up.getText().toString())
+                                etEmpName.getText().toString(), Float.parseFloat(
+                                        etEmpSalary.getText().toString()),
+                                Integer.parseInt(EmpAge.getText().toString())
 
                         );
-                        Call<Void> voidCall =employeeAPI.deleteEmployee(Integer.parseInt(etEmpID_Up.getText().toString()));
+                        Call<Void> voidCall =employeeAPI.deleteEmployee(Integer.parseInt(etEmpNO.getText().toString()));
 
                         voidCall.enqueue(new Callback<Void>() {
                             @Override

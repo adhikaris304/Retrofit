@@ -7,62 +7,57 @@
     tools:context=".RegisterEmployeeActivity"
     android:orientation="vertical">
 
-
     <EditText
-        android:id="@+id/etEmpID_Up"
+        android:id="@+id/etEmpNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_margin="20dp"
-        android:hint="Enter Employee no."/>
+        android:hint="Enter Employee Id" />
 
     <Button
+        android:id="@+id/btnSearchEmp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSearch_Up"
+        android:layout_margin="20dp"
         android:text="Search"
-        android:layout_margin="20dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/tvData"/>
+        android:textAllCaps="false" />
 
     <EditText
+        android:id="@+id/etEmpName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etName_Up"
         android:layout_margin="20dp"
-        android:hint="Name"/>
+        android:hint="Enter Employee Name" />
 
     <EditText
+        android:id="@+id/etEmpSalary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etAge_Up"
-        android:hint="Age"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:hint="Enter Employee Salary" />
 
     <EditText
+        android:id="@+id/EmpAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etSalary_Up"
-        android:hint="Salary"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:hint="Enter Employee Age" />
 
     <Button
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnRegister_Up"
-        android:text="Update"/>
-
+        android:layout_margin="20dp"
+        android:text="Update"
+        android:textAllCaps="false" />
 
     <Button
+        android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnDelete_Up"
+        android:layout_margin="20dp"
         android:text="Delete"
-        android:layout_marginTop="40dp"/>
+        android:textAllCaps="false" />
 
 
 </LinearLayout>
